@@ -1161,13 +1161,13 @@ def frechet_cell_fire(
             atomic_numbers=state.atomic_numbers,
             batch=state.batch,
             pbc=state.pbc,
-            velocities=None,
+            velocities=torch.zeros_like(state.positions),
             forces=forces,
             energy=energy,
             stress=stress,
             # Cell attributes
             cell_positions=cell_positions,
-            cell_velocities=None,
+            cell_velocities=torch.zeros((n_batches, 3, 3), device=device, dtype=dtype),
             cell_forces=cell_forces,
             cell_masses=cell_masses,
             # Optimization attributes
